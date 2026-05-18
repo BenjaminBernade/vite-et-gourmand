@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../prisma/client"
 }
 
 datasource db {
@@ -19,8 +20,9 @@ model User {
   password  String
   role      Role     @default(USER)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  orders    Order[]
+  orders Order[]
 }
 
 model Menu {
@@ -28,7 +30,7 @@ model Menu {
   title       String
   description String
   price       Float
-  stock       Int
+  stock Int @default(0)
   createdAt   DateTime @default(now())
 
   orders      Order[]
