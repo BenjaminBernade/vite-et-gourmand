@@ -12,35 +12,49 @@ export default async function MenusPage() {
   });
 
   return (
-    <main className="min-h-screen p-8">
-      <h1 className="mb-8 text-4xl font-bold">Nos menus</h1>
+  <section className="min-h-screen">
+    <div className="mb-8">
+      <h1 className="text-4xl font-bold">Nos menus</h1>
+      <p className="mt-3 max-w-2xl text-gray-600">
+        Découvrez nos menus événementiels préparés pour vos repas de famille,
+        fêtes, réceptions et moments gourmands.
+      </p>
+    </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {menus.length === 0 ? (
+      <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <p>Aucun menu disponible pour le moment.</p>
+      </div>
+    ) : (
+      <div className="grid gap-6 md:grid-cols-2">
         {menus.map((menu) => (
-          <div key={menu.id} className="rounded-lg border p-4 shadow">
+          <div
+            key={menu.id}
+            className="rounded-xl border bg-white p-6 shadow-sm transition hover:shadow-md"
+          >
             <h2 className="text-2xl font-bold">{menu.title}</h2>
 
-            <p className="mt-2 text-gray-600">
-              {menu.description}
-            </p>
+            <p className="mt-3 text-gray-600">{menu.description}</p>
 
-            <p className="mt-4 text-xl font-semibold">
-              {menu.price} €
-            </p>
+            <div className="mt-6 flex items-center justify-between">
+              <div>
+                <p className="text-xl font-semibold">{menu.price} €</p>
+                <p className="mt-1 text-sm text-gray-500">
+                  Stock disponible : {menu.stock}
+                </p>
+              </div>
 
-            <p className="mt-2 text-sm text-gray-500">
-              Stock disponible : {menu.stock}
-            </p>
-
-            <Link
-              href={`/menus/${menu.id}`}
-              className="mt-4 inline-block rounded bg-black px-4 py-2 text-white"
-            >
-              Voir le détail
-            </Link>
+              <Link
+                href={`/menus/${menu.id}`}
+                className="rounded bg-black px-4 py-2 text-white transition hover:bg-gray-800"
+              >
+                Voir le détail
+              </Link>
+            </div>
           </div>
         ))}
       </div>
-    </main>
-  );
+    )}
+  </section>
+);
 }
