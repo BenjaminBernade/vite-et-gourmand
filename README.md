@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vite & Gourmand
 
-## Getting Started
+Application web de commande de menus événementiels développée dans le cadre de l’ECF du titre professionnel Développeur Web et Web Mobile.
 
-First, run the development server:
+## Présentation
+
+Vite & Gourmand est une application permettant :
+
+- la consultation de menus événementiels,
+- la création de compte utilisateur,
+- la connexion sécurisée,
+- la gestion de commandes,
+- le suivi des réservations,
+- un espace administrateur.
+
+Le projet a été développé avec une architecture moderne fullstack basée sur Next.js.
+
+---
+
+# Fonctionnalités
+
+## Utilisateur
+
+- Création de compte
+- Connexion sécurisée
+- Consultation des menus
+- Passage de commande
+- Visualisation des commandes
+
+## Administrateur
+
+- Accès à l’espace administrateur
+- Gestion des menus
+- Visualisation des commandes
+
+---
+
+# Stack technique
+
+## Front-end
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+
+## Back-end
+
+- API Routes Next.js
+- Prisma ORM
+- NextAuth
+
+## Base de données
+
+- PostgreSQL
+- Neon Database
+
+## Déploiement
+
+- Vercel
+
+---
+
+# Installation locale
+
+## 1. Cloner le dépôt
+
+```bash
+git clone https://github.com/BenjaminBernade/vite-et-gourmand.git
+```
+
+## 2. Entrer dans le dossier
+
+```bash
+cd vite-et-gourmand
+```
+
+## 3. Installer les dépendances
+
+```bash
+npm install
+```
+
+---
+
+# Variables d’environnement
+
+Créer un fichier `.env` à la racine du projet.
+
+Exemple :
+
+```env
+DATABASE_URL="postgresql://..."
+NEXTAUTH_SECRET="..."
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+---
+
+# Base de données
+
+## Générer Prisma
+
+```bash
+npx prisma generate
+```
+
+## Lancer les migrations
+
+```bash
+npx prisma migrate dev
+```
+
+---
+
+# Lancer le projet
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application disponible sur :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Comptes de démonstration
 
-To learn more about Next.js, take a look at the following resources:
+## Administrateur
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Email :
+```txt
+admin@vite-et-gourmand.fr
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Mot de passe :
+```txt
+Admin123!
+```
 
-## Deploy on Vercel
+## Utilisateur
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Le jury peut créer un compte directement depuis l’application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# Déploiement
+
+Application déployée sur Vercel :
+
+https://vite-et-gourmand-psi.vercel.app
+
+---
+
+# Gestion de projet
+
+Outil utilisé :
+
+Trello
+
+---
+
+# Auteur
+
+Benjamin BERNADE
+
+ECF – TP Développeur Web et Web Mobile
