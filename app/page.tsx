@@ -13,19 +13,26 @@ export default function Home() {
           famille, fêtes et réceptions.
         </p>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/menus"
-            className="rounded bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+            className="rounded-xl bg-black px-6 py-3 text-white hover:opacity-90 transition"
           >
             Découvrir les menus
           </Link>
 
           <Link
             href="/register"
-            className="rounded border border-white px-6 py-3 transition hover:bg-white hover:text-black"
+            className="rounded-xl border px-6 py-3 hover:bg-black hover:text-white transition"
           >
             Créer un compte
+          </Link>
+
+          <Link
+            href="/api/auth/signin"
+            className="rounded-xl border px-6 py-3 hover:bg-black hover:text-white transition"
+          >
+            Connexion
           </Link>
         </div>
       </section>
