@@ -1,16 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Vite & Gourmand",
   description: "Application de commande de menus événementiels",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="fr">
       <body className="min-h-screen bg-gray-100 text-black">
@@ -21,19 +22,31 @@ export default function RootLayout({
             </Link>
 
             <div className="flex gap-4">
-              <Link href="/" className="rounded border px-4 py-2 hover:bg-black hover:text-white">
+              <Link
+                href="/"
+                className="rounded border px-4 py-2 hover:bg-black hover:text-white"
+              >
                 Accueil
               </Link>
 
-              <Link href="/menus" className="rounded border px-4 py-2 hover:bg-black hover:text-white">
+              <Link
+                href="/menus"
+                className="rounded border px-4 py-2 hover:bg-black hover:text-white"
+              >
                 Menus
               </Link>
 
-              <Link href="/dashboard" className="rounded border px-4 py-2 hover:bg-black hover:text-white">
+              <Link
+                href="/dashboard"
+                className="rounded border px-4 py-2 hover:bg-black hover:text-white"
+              >
                 Mon espace
               </Link>
 
-              <Link href="/admin" className="rounded border px-4 py-2 hover:bg-black hover:text-white">
+              <Link
+                href="/admin"
+                className="rounded border px-4 py-2 hover:bg-black hover:text-white"
+              >
                 Admin
               </Link>
             </div>
@@ -41,13 +54,40 @@ export default function RootLayout({
         </header>
 
         <main className="mx-auto max-w-6xl p-6">{children}</main>
-          <footer className="mt-16 border-t bg-white">
-            <div className="mx-auto flex max-w-6xl items-center justify-between p-6 text-sm text-gray-600">
-              <p>© 2026 Vite & Gourmand</p>
 
-              <p>Application développée avec Next.js, Prisma et PostgreSQL</p>
+        <footer className="mt-20 border-t bg-white">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 p-6 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="font-semibold text-black">
+                Vite & Gourmand
+              </p>
+
+              <p className="mt-2">
+                Menus événementiels pour vos repas, fêtes et réceptions.
+              </p>
             </div>
-          </footer>  
+
+            <div>
+              <p className="font-semibold text-black">
+                Horaires
+              </p>
+
+              <p className="mt-2">
+                Lundi - Dimanche : 9h00 - 20h00
+              </p>
+            </div>
+
+            <div className="flex gap-4">
+              <Link href="/mentions-legales">
+                Mentions légales
+              </Link>
+
+              <Link href="/cvg">
+                CGV
+              </Link>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

@@ -12,49 +12,63 @@ export default async function MenusPage() {
   });
 
   return (
-  <section className="min-h-screen">
-    <div className="mb-8">
-      <h1 className="text-4xl font-bold">Nos menus</h1>
-      <p className="mt-3 max-w-2xl text-gray-600">
-        Découvrez nos menus événementiels préparés pour vos repas de famille,
-        fêtes, réceptions et moments gourmands.
+  <section className="mx-auto max-w-6xl p-6">
+    <div className="mb-10">
+      <h1 className="text-5xl font-bold">Nos menus</h1>
+
+      <p className="mt-4 max-w-2xl text-lg text-gray-600">
+        Découvrez nos menus événementiels préparés pour vos repas de
+        famille, fêtes, réceptions et moments gourmands.
       </p>
     </div>
 
-    {menus.length === 0 ? (
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
-        <p>Aucun menu disponible pour le moment.</p>
-      </div>
-    ) : (
-      <div className="grid gap-6 md:grid-cols-2">
-        {menus.map((menu) => (
-          <div
-            key={menu.id}
-            className="rounded-xl border bg-white p-6 shadow-sm transition hover:shadow-md"
-          >
-            <h2 className="text-2xl font-bold">{menu.title}</h2>
+    <div className="grid gap-6 md:grid-cols-2">
+      {menus.map((menu) => (
+        <div
+          key={menu.id}
+          className="rounded-2xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <h2 className="text-3xl font-bold">{menu.title}</h2>
 
-            <p className="mt-3 text-gray-600">{menu.description}</p>
-
-            <div className="mt-6 flex items-center justify-between">
-              <div>
-                <p className="text-xl font-semibold">{menu.price} €</p>
-                <p className="mt-1 text-sm text-gray-500">
-                  Stock disponible : {menu.stock}
-                </p>
-              </div>
-
-              <Link
-                href={`/menus/${menu.id}`}
-                className="rounded bg-black px-4 py-2 text-white transition hover:bg-gray-800"
-              >
-                Voir le détail
-              </Link>
+              <p className="mt-3 text-gray-600">
+                {menu.description}
+              </p>
             </div>
+
+            <span
+              className={`rounded-full px-3 py-1 text-sm font-medium ${
+                menu.stock <= 5
+                  ? "bg-red-100 text-red-700"
+                  : "bg-green-100 text-green-700"
+              }`}
+            >
+              {menu.stock <= 5 ? "Stock faible" : "Disponible"}
+            </span>
           </div>
-        ))}
-      </div>
-    )}
+
+          <div className="mt-6 flex items-end justify-between">
+            <div>
+              <p className="text-3xl font-bold">
+                {menu.price} €
+              </p>
+
+              <p className="mt-2 text-sm text-gray-500">
+                Stock disponible : {menu.stock}
+              </p>
+            </div>
+
+            <Link
+              href={`/menus/${menu.id}`}
+              className="rounded-xl bg-black px-5 py-3 text-white transition hover:bg-gray-800"
+            >
+              Voir le détail
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
   </section>
-);
+  );
 }
