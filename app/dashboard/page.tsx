@@ -27,7 +27,7 @@ export default async function DashboardPage() {
 
   return (
     <main className="min-h-screen p-8">
-      <h1 className="text-3xl font-bold">Espace utilisateur</h1>
+      <h1 className="text-4xl font-bold">Mon espace</h1>
 
       <section className="mt-8">
         <h2 className="text-2xl font-bold">Mes commandes</h2>
