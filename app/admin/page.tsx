@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 
+import { connectMongo } from "@/lib/mongodb";
+import { Stats } from "@/models/Stats";
+
+await connectMongo();
+
+const stats = await Stats.find();
+
 export default function AdminPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
