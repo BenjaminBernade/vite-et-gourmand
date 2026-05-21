@@ -41,6 +41,13 @@ export default function RootLayout({
         </header>
 
         <main className="mx-auto max-w-6xl p-6">{children}</main>
+          <footer className="mt-16 border-t bg-white">
+            <div className="mx-auto flex max-w-6xl items-center justify-between p-6 text-sm text-gray-600">
+              <p>© 2026 Vite & Gourmand</p>
+
+              <p>Application développée avec Next.js, Prisma et PostgreSQL</p>
+            </div>
+          </footer>  
       </body>
     </html>
   );

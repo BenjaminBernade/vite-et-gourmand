@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="space-y-12">
-      <section className="rounded-3xl bg-gradient-to-r from-black to-gray-800 px-10 py-20 text-white shadow-xl">
+      <section className="rounded-3xl bg-linear-to-r from-black to-gray-800 px-10 py-20 text-white shadow-xl">
         <h1 className="max-w-3xl text-5xl font-bold leading-tight">
           Vite & Gourmand
         </h1>

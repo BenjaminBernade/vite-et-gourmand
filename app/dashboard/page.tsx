@@ -1,6 +1,8 @@
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+
+export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -9,45 +11,60 @@ export default async function DashboardPage() {
     redirect("/api/auth/signin");
   }
 
-  const user = await prisma.user.findUnique({
+  const orders = await prisma.order.findMany({
     where: {
-      email: session.user.email,
+      user: {
+        email: session.user.email,
+      },
     },
     include: {
-      orders: {
-        include: {
-          menu: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
+      menu: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 
   return (
-    <main className="min-h-screen p-8">
+    <section className="min-h-screen">
       <h1 className="text-4xl font-bold">Mon espace</h1>
 
-      <section className="mt-8">
-        <h2 className="text-2xl font-bold">Mes commandes</h2>
+      <p className="mt-3 text-gray-600">
+        Retrouvez ici l’historique de vos commandes et le suivi de vos
+        réservations.
+      </p>
 
-        <div className="mt-4 flex flex-col gap-4">
-          {user?.orders.length === 0 && (
-            <p>Vous n’avez pas encore passé de commande.</p>
-          )}
+      <div className="mt-10 space-y-6">
+        {orders.length === 0 ? (
+          <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <p>Aucune commande enregistrée.</p>
+          </div>
+        ) : (
+          orders.map((order) => (
+            <div
+              key={order.id}
+              className="rounded-xl border bg-white p-6 shadow-sm"
+            >
+              <h2 className="text-2xl font-bold">{order.menu.title}</h2>
 
-          {user?.orders.map((order) => (
-            <div key={order.id} className="rounded border p-4 shadow">
-              <h3 className="text-xl font-bold">{order.menu.title}</h3>
+              <p className="mt-3 text-gray-700">
+                Nombre de personnes : {order.quantity}
+              </p>
 
-              <p>Nombre de personnes : {order.quantity}</p>
-              <p>Prix total : {order.totalPrice} €</p>
-              <p>Statut : {order.status}</p>
+              <p className="mt-2 text-gray-700">
+                Prix total : {order.totalPrice} €
+              </p>
+
+              <p className="mt-2">
+                Statut :
+                <span className="ml-2 rounded bg-yellow-100 px-2 py-1 text-sm font-semibold text-yellow-800">
+                  {order.status}
+                </span>
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          ))
+        )}
+      </div>
+    </section>
   );
 }

@@ -32,7 +32,10 @@ export default function AdminPage() {
 
   return (
     <main className="min-h-screen p-8">
-      <h1 className="text-3xl font-bold">Espace administrateur</h1>
+      <h1 className="text-4xl font-bold">Administration</h1>
+        <p className="mt-3 text-gray-600">
+            Gérez les menus disponibles et les stocks de l’application.
+        </p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex max-w-md flex-col gap-4">
         <input
