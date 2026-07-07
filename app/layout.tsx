@@ -82,7 +82,7 @@ export default function RootLayout({
                 Mentions légales
               </Link>
 
-              <Link href="/cvg">
+              <Link href="/cgv">
                 CGV
               </Link>
             </div>

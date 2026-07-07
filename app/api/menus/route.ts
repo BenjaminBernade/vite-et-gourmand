@@ -26,14 +26,14 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { title, description, price } = body;
+    const { title, description, price, stock } = body;
 
     const menu = await prisma.menu.create({
       data: {
         title,
         description,
         price: Number(price),
-        stock: 0,
+        stock: Number(stock),
       },
     });
 

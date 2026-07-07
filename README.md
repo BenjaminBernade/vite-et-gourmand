@@ -1,41 +1,55 @@
-# Vite & Gourmand
+# 🍽️ Vite & Gourmand
 
-Application web de commande de menus événementiels développée dans le cadre de l’ECF du titre professionnel Développeur Web et Web Mobile.
+Application web Full Stack développée avec **Next.js**, **TypeScript**, **Prisma**, **PostgreSQL** et **MongoDB** dans le cadre de l'**Évaluation en Cours de Formation (ECF)** du titre **Graduate Développeur Web et Web Mobile**.
 
-## Présentation
+L'application permet aux utilisateurs de consulter des menus de restauration événementielle, de créer un compte, de passer des commandes et d'en suivre le statut. Un espace d'administration permet de gérer les menus proposés.
 
-Vite & Gourmand est une application permettant :
+## 📑 Sommaire
 
-- la consultation de menus événementiels,
-- la création de compte utilisateur,
-- la connexion sécurisée,
-- la gestion de commandes,
-- le suivi des réservations,
-- un espace administrateur.
-
-Le projet a été développé avec une architecture moderne fullstack basée sur Next.js.
+- [Présentation](#-présentation)
+- [Fonctionnalités](#-fonctionnalités)
+- [Stack technique](#️-stack-technique)
+- [Architecture](#️-architecture)
+- [Installation Docker](#-installation-avec-docker)
+- [Documentation](#-documentation)
+- [Captures d'écran](#-captures-décran)
 
 ---
 
-# Fonctionnalités
+# 🚀 Démonstration
+
+## Site déployé
+
+👉 **https://vite-et-gourmand-psi.vercel.app**
+
+---
+
+# ✨ Fonctionnalités
+
+## Visiteur
+
+- Consultation de la page d'accueil
+- Consultation des menus
+- Détail d'un menu
+- Création d'un compte
+- Connexion
 
 ## Utilisateur
 
-- Création de compte
-- Connexion sécurisée
-- Consultation des menus
+- Tableau de bord
+- Consultation des commandes
 - Passage de commande
-- Visualisation des commandes
+- Suivi des commandes
 
 ## Administrateur
 
-- Accès à l’espace administrateur
+- Création de menus
 - Gestion des menus
-- Visualisation des commandes
+- Gestion des stocks
 
 ---
 
-# Stack technique
+# 🛠️ Stack technique
 
 ## Front-end
 
@@ -47,125 +61,191 @@ Le projet a été développé avec une architecture moderne fullstack basée sur
 ## Back-end
 
 - API Routes Next.js
+- Server Actions
 - Prisma ORM
-- NextAuth
 
-## Base de données
+## Bases de données
 
 - PostgreSQL
-- Neon Database
+- MongoDB
+
+## Authentification
+
+- NextAuth
 
 ## Déploiement
 
 - Vercel
+- Docker
 
 ---
 
-# Installation locale
+# 🏗️ Architecture
 
-## 1. Cloner le dépôt
+Le projet est organisé selon une séparation des responsabilités.
 
-```bash
-git clone https://github.com/BenjaminBernade/vite-et-gourmand.git
+```
+Interface utilisateur
+        │
+        ▼
+API Routes / Server Actions
+        │
+        ▼
+Services
+        │
+        ▼
+Repositories
+        │
+        ▼
+Prisma ORM
+        │
+        ▼
+PostgreSQL
 ```
 
-## 2. Entrer dans le dossier
+Les statistiques sont stockées dans MongoDB.
+
+---
+
+# 📂 Structure du projet
+
+```
+app/
+components/
+data/
+docs/
+hooks/
+lib/
+models/
+prisma/
+public/
+repositories/
+services/
+sql/
+types/
+```
+
+---
+
+# 🐳 Installation avec Docker
 
 ```bash
+git clone <url-du-projet>
+
 cd vite-et-gourmand
-```
 
-## 3. Installer les dépendances
-
-```bash
-npm install
-```
-
----
-
-# Variables d’environnement
-
-Créer un fichier `.env` à la racine du projet.
-
-Exemple :
-
-```env
-DATABASE_URL="postgresql://..."
-NEXTAUTH_SECRET="..."
-NEXTAUTH_URL="http://localhost:3000"
-```
-
----
-
-# Base de données
-
-## Générer Prisma
-
-```bash
-npx prisma generate
-```
-
-## Lancer les migrations
-
-```bash
-npx prisma migrate dev
-```
-
----
-
-# Lancer le projet
-
-```bash
-npm run dev
+docker compose up --build
 ```
 
 Application disponible sur :
 
-```txt
+```
 http://localhost:3000
 ```
 
 ---
 
-# Comptes de démonstration
+# 💻 Installation classique
 
-## Administrateur
+Installation des dépendances :
 
-Email :
-```txt
-admin@vite-et-gourmand.fr
+```bash
+npm install
 ```
 
-Mot de passe :
-```txt
-Admin123!
+Variables d'environnement :
+
+```
+DATABASE_URL=
+
+NEXTAUTH_URL=
+
+NEXTAUTH_SECRET=
+
+MONGODB_URI=
 ```
 
-## Utilisateur
+Migration Prisma :
 
-Le jury peut créer un compte directement depuis l’application.
+```bash
+npx prisma migrate dev
+```
 
----
+Lancement :
 
-# Déploiement
-
-Application déployée sur Vercel :
-
-https://vite-et-gourmand-psi.vercel.app
-
----
-
-# Gestion de projet
-
-Outil utilisé :
-
-Trello
+```bash
+npm run dev
+```
 
 ---
 
-# Auteur
+# 📚 Documentation
 
-Benjamin BERNADE
+Toute la documentation est disponible dans le dossier :
 
-ECF – TP Développeur Web et Web Mobile
+```
+docs/
+```
 
+Elle comprend :
+
+- 📐 Maquettes Figma
+- 📊 Diagrammes UML
+- 🏗️ Architecture
+- 🔒 Sécurité
+- 🚀 Déploiement
+
+---
+
+# 🗄️ Scripts SQL
+
+Le dossier :
+
+```
+sql/
+```
+
+contient :
+
+- script de création de la base
+- script d'initialisation
+
+---
+
+# 📸 Captures d'écran
+
+## Accueil
+
+![Accueil](docs/01-Maquettes/Accueil.png)
+
+---
+
+## Menus
+
+![Menus](docs/01-Maquettes/Menus.png)
+
+---
+
+## Détail d'un menu
+
+![Détail menu](docs/01-Maquettes/Détails%20menu.png)
+
+---
+
+## Tableau de bord
+
+![Dashboard](docs/01-Maquettes/Tableau%20de%20bord.png)
+
+---
+
+## Administration
+
+![Administration](docs/01-Maquettes/Administration.png)
+
+---
+
+# 👨‍💻 Auteur
+
+**Benjamin Bernade**
+
+Projet réalisé dans le cadre de l'Évaluation en Cours de Formation (ECF) du titre Graduate Développeur Web et Web Mobile.
