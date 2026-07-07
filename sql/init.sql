@@ -1,0 +1,28 @@
+CREATE TABLE "User" (
+  "id" TEXT PRIMARY KEY,
+  "name" TEXT,
+  "email" TEXT UNIQUE NOT NULL,
+  "password" TEXT NOT NULL,
+  "role" TEXT NOT NULL DEFAULT 'USER'
+);
+
+CREATE TABLE "Menu" (
+  "id" TEXT PRIMARY KEY,
+  "title" TEXT NOT NULL,
+  "description" TEXT NOT NULL,
+  "price" INTEGER NOT NULL,
+  "stock" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE "Order" (
+  "id" TEXT PRIMARY KEY,
+  "userId" TEXT NOT NULL,
+  "menuId" TEXT NOT NULL,
+  "quantity" INTEGER NOT NULL,
+  "totalPrice" INTEGER NOT NULL,
+  "status" TEXT NOT NULL DEFAULT 'PENDING',
+  "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id"),
+  CONSTRAINT "Order_menuId_fkey" FOREIGN KEY ("menuId") REFERENCES "Menu"("id")
+);
