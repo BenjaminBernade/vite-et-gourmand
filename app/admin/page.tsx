@@ -2,18 +2,11 @@
 
 import { useState } from "react";
 
-import { connectMongo } from "@/lib/mongodb";
-import { Stats } from "@/models/Stats";
-
-await connectMongo();
-
-const stats = await Stats.find();
-
 export default function AdminPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [stock, setStock] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +16,12 @@ export default function AdminPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, description, price, image }),
+      body: JSON.stringify({
+        title,
+        description,
+        price: Number(price),
+        stock: Number(stock),
+      }),
     });
 
     if (res.ok) {
@@ -31,7 +29,7 @@ export default function AdminPage() {
       setTitle("");
       setDescription("");
       setPrice("");
-      setImage("");
+      setStock("");
     } else {
       alert("Erreur création menu");
     }
@@ -40,9 +38,10 @@ export default function AdminPage() {
   return (
     <main className="min-h-screen p-8">
       <h1 className="text-4xl font-bold">Administration</h1>
-        <p className="mt-3 text-gray-600">
-            Gérez les menus disponibles et les stocks de l’application.
-        </p>
+
+      <p className="mt-3 text-gray-600">
+        Gérez les menus disponibles et les stocks de l’application.
+      </p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex max-w-md flex-col gap-4">
         <input
@@ -69,9 +68,10 @@ export default function AdminPage() {
 
         <input
           className="border p-2"
-          placeholder="URL image"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
+          placeholder="Stock"
+          type="number"
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
         />
 
         <button className="rounded bg-black p-2 text-white" type="submit">

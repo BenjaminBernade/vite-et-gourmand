@@ -1,15 +1,10 @@
-import { prisma } from "@/lib/prisma";
-
+import { listMenus } from "@/services/menu.service";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
 export default async function MenusPage() {
-  const menus = await prisma.menu.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const menus = await listMenus();
 
   return (
   <section className="mx-auto max-w-6xl p-6">
