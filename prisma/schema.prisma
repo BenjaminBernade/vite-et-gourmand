@@ -30,7 +30,7 @@ model Menu {
   title       String
   description String
   price       Float
-  stock Int @default(0)
+  stock       Int      @default(0)
   createdAt   DateTime @default(now())
 
   orders      Order[]

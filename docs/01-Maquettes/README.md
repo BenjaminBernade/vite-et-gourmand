@@ -39,7 +39,7 @@ Les maquettes couvrent les principaux parcours de l'application :
 | `Menus.png` | Liste des menus |
 | `Detail-menu.png` | Détail d'un menu |
 | `Connexion.png` | Page de connexion |
-| `Tableau-de-bord.png` | Tableau de bord utilisateur |
+| `Mon-espace.png` | Espace utilisateur |
 | `Administration.png` | Interface d'administration |
 
 ---

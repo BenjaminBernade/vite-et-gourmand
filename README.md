@@ -1,47 +1,62 @@
 # 🍽️ Vite & Gourmand
 
-Application web Full Stack développée avec **Next.js**, **TypeScript**, **Prisma**, **PostgreSQL** et **MongoDB** dans le cadre de l'**Évaluation en Cours de Formation (ECF)** du titre **Graduate Développeur Web et Web Mobile**.
+> Application web Full Stack de restauration événementielle développée avec **Next.js**, **TypeScript**, **Prisma**, **PostgreSQL** et **MongoDB**.
 
-L'application permet aux utilisateurs de consulter des menus de restauration événementielle, de créer un compte, de passer des commandes et d'en suivre le statut. Un espace d'administration permet de gérer les menus proposés.
+Projet réalisé dans le cadre de l'**Évaluation en Cours de Formation (ECF)** du titre **Graduate Développeur Web et Web Mobile**.
+
+---
 
 ## 📑 Sommaire
 
 - [Présentation](#-présentation)
+- [Démonstration](#-démonstration)
 - [Fonctionnalités](#-fonctionnalités)
 - [Stack technique](#️-stack-technique)
 - [Architecture](#️-architecture)
-- [Installation Docker](#-installation-avec-docker)
+- [Structure du projet](#-structure-du-projet)
+- [Installation avec Docker](#-installation-avec-docker)
+- [Installation classique](#-installation-classique)
 - [Documentation](#-documentation)
+- [Scripts SQL](#️-scripts-sql)
 - [Captures d'écran](#-captures-décran)
+- [Auteur](#-auteur)
+
+---
+
+# 📖 Présentation
+
+Vite & Gourmand est une application web permettant de consulter des menus de restauration événementielle, de créer un compte utilisateur, de passer des commandes et d'en suivre le statut.
+
+Une interface d'administration permet également de gérer les menus proposés ainsi que leur disponibilité.
 
 ---
 
 # 🚀 Démonstration
 
-## Site déployé
+## 🌐 Site déployé
 
-👉 **https://vite-et-gourmand-psi.vercel.app**
+**https://vite-et-gourmand-psi.vercel.app**
 
 ---
 
 # ✨ Fonctionnalités
 
-## Visiteur
+## 👤 Visiteur
 
 - Consultation de la page d'accueil
 - Consultation des menus
-- Détail d'un menu
+- Consultation du détail d'un menu
 - Création d'un compte
 - Connexion
 
-## Utilisateur
+## 👤 Utilisateur
 
-- Tableau de bord
+- Accès à son espace personnel
 - Consultation des commandes
 - Passage de commande
 - Suivi des commandes
 
-## Administrateur
+## 👨‍💼 Administrateur
 
 - Création de menus
 - Gestion des menus
@@ -75,16 +90,21 @@ L'application permet aux utilisateurs de consulter des menus de restauration év
 
 ## Déploiement
 
-- Vercel
 - Docker
+- Vercel
+
+## Versionnement
+
+- Git
+- GitHub
 
 ---
 
 # 🏗️ Architecture
 
-Le projet est organisé selon une séparation des responsabilités.
+Le projet est organisé selon une architecture favorisant la séparation des responsabilités.
 
-```
+```text
 Interface utilisateur
         │
         ▼
@@ -103,18 +123,17 @@ Prisma ORM
 PostgreSQL
 ```
 
-Les statistiques sont stockées dans MongoDB.
+Les statistiques de l'application sont stockées dans **MongoDB**.
 
 ---
 
 # 📂 Structure du projet
 
-```
+```text
 app/
 components/
 data/
 docs/
-hooks/
 lib/
 models/
 prisma/
@@ -137,9 +156,9 @@ cd vite-et-gourmand
 docker compose up --build
 ```
 
-Application disponible sur :
+L'application est ensuite disponible à l'adresse :
 
-```
+```text
 http://localhost:3000
 ```
 
@@ -155,7 +174,7 @@ npm install
 
 Variables d'environnement :
 
-```
+```env
 DATABASE_URL=
 
 NEXTAUTH_URL=
@@ -171,7 +190,7 @@ Migration Prisma :
 npx prisma migrate dev
 ```
 
-Lancement :
+Lancement du projet :
 
 ```bash
 npm run dev
@@ -181,9 +200,9 @@ npm run dev
 
 # 📚 Documentation
 
-Toute la documentation est disponible dans le dossier :
+Toute la documentation technique est disponible dans le dossier :
 
-```
+```text
 docs/
 ```
 
@@ -191,9 +210,9 @@ Elle comprend :
 
 - 📐 Maquettes Figma
 - 📊 Diagrammes UML
-- 🏗️ Architecture
-- 🔒 Sécurité
-- 🚀 Déploiement
+- 🏗️ Architecture logicielle
+- 🔒 Documentation sécurité
+- 🚀 Documentation de déploiement
 
 ---
 
@@ -201,14 +220,14 @@ Elle comprend :
 
 Le dossier :
 
-```
+```text
 sql/
 ```
 
-contient :
+contient les scripts suivants :
 
-- script de création de la base
-- script d'initialisation
+- `init.sql` : création de la base de données
+- `seed.sql` : initialisation des données
 
 ---
 
@@ -232,9 +251,9 @@ contient :
 
 ---
 
-## Tableau de bord
+## Mon espace
 
-![Dashboard](docs/01-Maquettes/Tableau%20de%20bord.png)
+![Mon espace](docs/01-Maquettes/Mon%20espace.png)
 
 ---
 
@@ -248,4 +267,12 @@ contient :
 
 **Benjamin Bernade**
 
-Projet réalisé dans le cadre de l'Évaluation en Cours de Formation (ECF) du titre Graduate Développeur Web et Web Mobile.
+Projet réalisé dans le cadre de l'Évaluation en Cours de Formation (ECF) du titre **Graduate Développeur Web et Web Mobile**.
+
+---
+
+# 📄 Licence
+
+Projet réalisé exclusivement dans le cadre d'une évaluation pédagogique (ECF).
+
+Il est destiné à un usage académique et de démonstration.
