@@ -3572,8 +3572,8 @@ export namespace Prisma {
     createdAt?: boolean
     userId?: boolean
     menuId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3584,8 +3584,8 @@ export namespace Prisma {
     createdAt?: boolean
     userId?: boolean
     menuId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3596,8 +3596,8 @@ export namespace Prisma {
     createdAt?: boolean
     userId?: boolean
     menuId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
@@ -3612,23 +3612,23 @@ export namespace Prisma {
 
   export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "quantity" | "totalPrice" | "status" | "createdAt" | "userId" | "menuId", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type OrderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type OrderIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     menu?: boolean | MenuDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $OrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Order"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       menu: Prisma.$MenuPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4032,8 +4032,8 @@ export namespace Prisma {
    */
   export interface Prisma__OrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     menu<T extends MenuDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MenuDefaultArgs<ExtArgs>>): Prisma__MenuClient<$Result.GetResult<Prisma.$MenuPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4773,8 +4773,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Order"> | Date | string
     userId?: StringFilter<"Order"> | string
     menuId?: StringFilter<"Order"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     menu?: XOR<MenuScalarRelationFilter, MenuWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type OrderOrderByWithRelationInput = {
@@ -4785,8 +4785,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     userId?: SortOrder
     menuId?: SortOrder
-    user?: UserOrderByWithRelationInput
     menu?: MenuOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
@@ -4800,8 +4800,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Order"> | Date | string
     userId?: StringFilter<"Order"> | string
     menuId?: StringFilter<"Order"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     menu?: XOR<MenuScalarRelationFilter, MenuWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type OrderOrderByWithAggregationInput = {
@@ -4979,8 +4979,8 @@ export namespace Prisma {
     totalPrice: number
     status: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutOrdersInput
     menu: MenuCreateNestedOneWithoutOrdersInput
+    user: UserCreateNestedOneWithoutOrdersInput
   }
 
   export type OrderUncheckedCreateInput = {
@@ -4999,8 +4999,8 @@ export namespace Prisma {
     totalPrice?: FloatFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutOrdersNestedInput
     menu?: MenuUpdateOneRequiredWithoutOrdersNestedInput
+    user?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateInput = {
@@ -5247,14 +5247,14 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type MenuScalarRelationFilter = {
     is?: MenuWhereInput
     isNot?: MenuWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type OrderCountOrderByAggregateInput = {
@@ -5409,24 +5409,16 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutOrdersInput = {
-    create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
-    connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type MenuCreateNestedOneWithoutOrdersInput = {
     create?: XOR<MenuCreateWithoutOrdersInput, MenuUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: MenuCreateOrConnectWithoutOrdersInput
     connect?: MenuWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
+  export type UserCreateNestedOneWithoutOrdersInput = {
     create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
-    upsert?: UserUpsertWithoutOrdersInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrdersInput, UserUpdateWithoutOrdersInput>, UserUncheckedUpdateWithoutOrdersInput>
   }
 
   export type MenuUpdateOneRequiredWithoutOrdersNestedInput = {
@@ -5435,6 +5427,14 @@ export namespace Prisma {
     upsert?: MenuUpsertWithoutOrdersInput
     connect?: MenuWhereUniqueInput
     update?: XOR<XOR<MenuUpdateToOneWithWhereWithoutOrdersInput, MenuUpdateWithoutOrdersInput>, MenuUncheckedUpdateWithoutOrdersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
+    create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
+    upsert?: UserUpsertWithoutOrdersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrdersInput, UserUpdateWithoutOrdersInput>, UserUncheckedUpdateWithoutOrdersInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5665,6 +5665,29 @@ export namespace Prisma {
     data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutMenuInput>
   }
 
+  export type MenuCreateWithoutOrdersInput = {
+    id?: string
+    title: string
+    description: string
+    price: number
+    stock?: number
+    createdAt?: Date | string
+  }
+
+  export type MenuUncheckedCreateWithoutOrdersInput = {
+    id?: string
+    title: string
+    description: string
+    price: number
+    stock?: number
+    createdAt?: Date | string
+  }
+
+  export type MenuCreateOrConnectWithoutOrdersInput = {
+    where: MenuWhereUniqueInput
+    create: XOR<MenuCreateWithoutOrdersInput, MenuUncheckedCreateWithoutOrdersInput>
+  }
+
   export type UserCreateWithoutOrdersInput = {
     id?: string
     name: string
@@ -5690,27 +5713,33 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
   }
 
-  export type MenuCreateWithoutOrdersInput = {
-    id?: string
-    title: string
-    description: string
-    price: number
-    stock?: number
-    createdAt?: Date | string
-  }
-
-  export type MenuUncheckedCreateWithoutOrdersInput = {
-    id?: string
-    title: string
-    description: string
-    price: number
-    stock?: number
-    createdAt?: Date | string
-  }
-
-  export type MenuCreateOrConnectWithoutOrdersInput = {
-    where: MenuWhereUniqueInput
+  export type MenuUpsertWithoutOrdersInput = {
+    update: XOR<MenuUpdateWithoutOrdersInput, MenuUncheckedUpdateWithoutOrdersInput>
     create: XOR<MenuCreateWithoutOrdersInput, MenuUncheckedCreateWithoutOrdersInput>
+    where?: MenuWhereInput
+  }
+
+  export type MenuUpdateToOneWithWhereWithoutOrdersInput = {
+    where?: MenuWhereInput
+    data: XOR<MenuUpdateWithoutOrdersInput, MenuUncheckedUpdateWithoutOrdersInput>
+  }
+
+  export type MenuUpdateWithoutOrdersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    stock?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MenuUncheckedUpdateWithoutOrdersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    stock?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpsertWithoutOrdersInput = {
@@ -5742,35 +5771,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MenuUpsertWithoutOrdersInput = {
-    update: XOR<MenuUpdateWithoutOrdersInput, MenuUncheckedUpdateWithoutOrdersInput>
-    create: XOR<MenuCreateWithoutOrdersInput, MenuUncheckedCreateWithoutOrdersInput>
-    where?: MenuWhereInput
-  }
-
-  export type MenuUpdateToOneWithWhereWithoutOrdersInput = {
-    where?: MenuWhereInput
-    data: XOR<MenuUpdateWithoutOrdersInput, MenuUncheckedUpdateWithoutOrdersInput>
-  }
-
-  export type MenuUpdateWithoutOrdersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    stock?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MenuUncheckedUpdateWithoutOrdersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    stock?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateManyUserInput = {

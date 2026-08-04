@@ -1,0 +1,137 @@
+.
+├── AGENTS.md
+├── app
+│   ├── admin
+│   │   └── page.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   └── [...nextauth]
+│   │   ├── menus
+│   │   │   └── route.ts
+│   │   ├── orders
+│   │   │   └── route.ts
+│   │   └── register
+│   │       └── route.ts
+│   ├── cgv
+│   │   └── page.tsx
+│   ├── dashboard
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── mentions-legales
+│   │   └── page.tsx
+│   ├── menus
+│   │   ├── [id]
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── order
+│   │   └── [id]
+│   │       └── page.tsx
+│   ├── page.tsx
+│   └── register
+│       └── page.tsx
+├── CLAUDE.md
+├── components
+├── docker-compose.yml
+├── Dockerfile
+├── docs
+│   ├── 01-Maquettes
+│   │   ├── Accueil.png
+│   │   ├── Administration.png
+│   │   ├── Connexion.png
+│   │   ├── Détails menu.png
+│   │   ├── ECF - Vite & Gourmand - Maquettes.fig
+│   │   ├── ECF - Vite & Gourmand - Maquettes.pdf
+│   │   ├── Menus.png
+│   │   ├── Mon espace.png
+│   │   └── README.md
+│   ├── 02-Diagrammes
+│   │   ├── 01-cas-utilisation.md
+│   │   ├── 02-diagramme-classes.md
+│   │   ├── 03-diagramme-sequence.md
+│   │   ├── 04-architecture.md
+│   │   └── README.md
+│   ├── 03-Architecture
+│   │   ├── 01-choix-techniques.md
+│   │   ├── 02-structure-projet.md
+│   │   ├── 03-base-de-données.md
+│   │   └── README.md
+│   ├── 04-Securite
+│   │   ├── 01-authentification.md
+│   │   ├── 02-validation.md
+│   │   ├── 03-bonnes-pratiques.md
+│   │   └── README.md
+│   ├── 05-Deploiement
+│   │   ├── 01-vercel.md
+│   │   ├── 02-docker.md
+│   │   └── README.md
+│   └── README.md
+├── eslint.config.mjs
+├── lib
+│   ├── mongodb.ts
+│   └── prisma.ts
+├── models
+│   └── Stats.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── prisma
+│   ├── client
+│   │   ├── client.d.ts
+│   │   ├── client.js
+│   │   ├── default.d.ts
+│   │   ├── default.js
+│   │   ├── edge.d.ts
+│   │   ├── edge.js
+│   │   ├── index-browser.js
+│   │   ├── index.d.ts
+│   │   ├── index.js
+│   │   ├── package.json
+│   │   ├── query_compiler_fast_bg.js
+│   │   ├── query_compiler_fast_bg.wasm
+│   │   ├── query_compiler_fast_bg.wasm-base64.js
+│   │   ├── runtime
+│   │   │   ├── client.d.ts
+│   │   │   ├── client.js
+│   │   │   ├── index-browser.d.ts
+│   │   │   ├── index-browser.js
+│   │   │   └── wasm-compiler-edge.js
+│   │   ├── schema.prisma
+│   │   ├── wasm-edge-light-loader.mjs
+│   │   └── wasm-worker-loader.mjs
+│   ├── migrations
+│   │   ├── 20260513223015_init
+│   │   │   └── migration.sql
+│   │   ├── 20260518094902_add_user_updated_at
+│   │   │   └── migration.sql
+│   │   ├── 20260518131259_update_menu_model
+│   │   │   └── migration.sql
+│   │   ├── 20260518132752_add_default_stock
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   └── schema.prisma
+├── prisma.config.ts
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── repositories
+│   └── menu.repository.ts
+├── services
+│   └── menu.service.ts
+├── sql
+│   ├── init.sql
+│   └── seed.sql
+├── tree-clean.txt
+├── tree.txt
+├── tsconfig.json
+└── types
+    └── next-auth.d.ts
+
+39 directories, 96 files

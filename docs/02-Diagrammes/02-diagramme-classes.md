@@ -1,6 +1,6 @@
 # Diagramme de classes
 
-Ce diagramme représente les principales entités manipulées par l'application.
+Ce diagramme représente les principales entités métier de l'application **Vite & Gourmand** ainsi que les relations existant entre elles. Il a servi de support à la conception de la base de données relationnelle utilisée par l'application.
 
 ```mermaid
 classDiagram
@@ -31,37 +31,48 @@ class Order {
 
 User "1" --> "*" Order : passe
 
-Order "*" --> "1" Menu : contient
+Order "*" --> "1" Menu : concerne
 ```
 
-## Description
+## Description des classes
 
 ### User
 
 Représente un utilisateur de l'application.
 
-Deux rôles sont disponibles :
+Deux rôles principaux sont gérés :
 
-- Utilisateur
+- Client
 - Administrateur
+
+Chaque utilisateur peut consulter les menus, passer des commandes et accéder aux fonctionnalités correspondant à son rôle.
+
+---
 
 ### Menu
 
-Représente un menu événementiel.
+Représente un menu proposé par Vite & Gourmand.
 
-Chaque menu possède :
+Chaque menu possède notamment :
 
-- un titre
-- une description
-- un prix
-- un stock
+- un titre ;
+- une description ;
+- un prix ;
+- une quantité disponible en stock.
+
+Un même menu peut être commandé par plusieurs utilisateurs.
+
+---
 
 ### Order
 
-Une commande est créée par un utilisateur et concerne un menu.
+Représente une commande passée par un utilisateur.
 
-Elle contient :
+Chaque commande est associée à un seul utilisateur et concerne un seul menu.
 
-- la quantité
-- le prix total
-- le statut de la commande.
+Elle enregistre notamment :
+
+- la quantité commandée ;
+- le prix total ;
+- le statut de la commande ;
+- la date de création.

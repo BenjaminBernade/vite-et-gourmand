@@ -1,84 +1,59 @@
-# Diagramme d’architecture applicative
+# Diagramme de séquence — Passage d’une commande
 
-Ce diagramme présente l’organisation générale de l’application Vite & Gourmand.
+Ce diagramme représente le parcours d’un utilisateur connecté lorsqu’il consulte un menu puis passe une commande.
 
 ```mermaid
-flowchart TD
-    U[Utilisateur / Administrateur]
-
-    subgraph Frontend["Front-end Next.js / React"]
-        Pages[Pages App Router]
-        Components[Composants UI]
-        Forms[Formulaires]
+sequenceDiagram
+    actor C as Utilisateur
+    participant P as Interface Next.js
+    participant API as API /api/orders
+    participant S as Service métier
+    participant R as Repository
+    participant DB as PostgreSQL via Prisma
+    C->>P: Consulte un menu
+    P->>API: Demande les informations du menu
+    API->>S: Transmet la demande
+    S->>R: Recherche le menu
+    R->>DB: Requête de lecture
+    DB-->>R: Données du menu
+    R-->>S: Menu trouvé
+    S-->>API: Retourne le menu
+    API-->>P: Réponse JSON
+    P-->>C: Affiche le menu
+    C->>P: Saisit la quantité et valide la commande
+    P->>API: Envoie les données de commande
+    API->>S: Demande de création de commande
+    S->>S: Valide les données
+    S->>R: Vérifie le stock disponible
+    R->>DB: Lecture du stock
+    DB-->>R: Stock disponible
+    R-->>S: Résultat de la vérification
+    alt Stock suffisant
+        S->>S: Calcule le prix total
+        S->>R: Crée la commande et met à jour le stock
+        R->>DB: Écriture en base
+        DB-->>R: Confirmation
+        R-->>S: Commande créée
+        S-->>API: Retourne la confirmation
+        API-->>P: Réponse de succès
+        P-->>C: Affiche la confirmation de commande
+    else Stock insuffisant
+        S-->>API: Retourne une erreur métier
+        API-->>P: Réponse d'erreur
+        P-->>C: Affiche un message d'indisponibilité
     end
-
-    subgraph Backend["Back-end applicatif"]
-        API[API routes / Server Actions]
-        Services[Services métier]
-        Repositories[Repositories]
-    end
-
-    subgraph Data["Données"]
-        Prisma[Prisma ORM]
-        Postgres[(PostgreSQL / Neon)]
-        Mongo[(MongoDB / Statistiques)]
-    end
-
-    subgraph Deployment["Déploiement"]
-        Vercel[Vercel]
-        Docker[Docker]
-    end
-
-    U --> Pages
-    Pages --> Components
-    Pages --> Forms
-    Forms --> API
-    Pages --> API
-
-    API --> Services
-    Services --> Repositories
-    Repositories --> Prisma
-    Prisma --> Postgres
-
-    Services --> Mongo
-
-    Vercel --> Frontend
-    Vercel --> Backend
-    Docker --> Frontend
-    Docker --> Backend
 ```
 
 ## Description
 
-L’application est développée avec Next.js et React.
+Le diagramme présente les échanges entre l’utilisateur, l’interface Next.js, la route API, la couche de service, le repository et la base PostgreSQL accessible avec Prisma.
 
-Même si le projet utilise un seul dépôt Git, les responsabilités sont séparées en plusieurs couches :
+Le traitement comprend :
 
-- `app/` contient les pages, routes et interfaces utilisateur ;
-- `components/` contient les composants réutilisables ;
-- `services/` contient la logique métier ;
-- `repositories/` contient l’accès aux données ;
-- `lib/` contient les connexions techniques, notamment Prisma et MongoDB ;
-- `models/` contient les modèles utilisés pour les données NoSQL.
-
-## Justification de l’architecture
-
-Cette architecture permet de limiter le mélange entre l’interface utilisateur et la logique métier.
-
-Le parcours général est le suivant :
-
-```txt
-Interface utilisateur
-    ↓
-API routes / actions serveur
-    ↓
-Services métier
-    ↓
-Repositories
-    ↓
-Prisma ORM
-    ↓
-PostgreSQL
-```
-
-Cette séparation rend le projet plus lisible, plus maintenable et plus proche d’une organisation professionnelle.
+- la consultation d’un menu ;
+- la validation des données saisies ;
+- la vérification du stock ;
+- le calcul du montant total ;
+- la création de la commande ;
+- la mise à jour du stock ;
+- le retour d’une confirmation ou d’un message d’erreur.
