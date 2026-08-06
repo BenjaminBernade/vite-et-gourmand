@@ -44,6 +44,9 @@ export default function RegisterPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="border p-2"
+          required
+          minLength={2
+          }
         />
 
         <input
@@ -52,6 +55,7 @@ export default function RegisterPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="border p-2"
+          required
         />
 
         <input
@@ -60,6 +64,8 @@ export default function RegisterPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="border p-2"
+          required
+          minLength={8}
         />
 
         <button

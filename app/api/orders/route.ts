@@ -15,10 +15,20 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const {
-      menuId,
-      quantity,
-    } = body;
+    const { menuId, quantity } = body;
+
+    const parsedQuantity = Number(quantity);
+
+    if (
+      !menuId ||
+      !Number.isInteger(parsedQuantity) ||
+      parsedQuantity < 1
+    ) {
+      return NextResponse.json(
+        { error: "Données de commande invalides" },
+        { status: 400 }
+      );
+    }
 
     const user = await prisma.user.findUnique({
       where: {
@@ -46,11 +56,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const totalPrice = menu.price * Number(quantity);
+    const totalPrice = menu.price * parsedQuantity;
 
     const order = await prisma.order.create({
       data: {
-        quantity: Number(quantity),
+        quantity: parsedQuantity,
         totalPrice,
         status: "EN_ATTENTE",
         userId: user.id,
@@ -58,8 +68,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json(order);
-
+    return NextResponse.json(order, { status: 201 });
   } catch (error) {
     console.error(error);
 

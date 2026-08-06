@@ -39,6 +39,9 @@ export default function OrderPage({ params }: Props) {
 
         <div className="mt-8 flex flex-col gap-4">
           <input
+            type="number"
+            min={1}
+            required
             className="border p-2"
             placeholder="Nombre de personnes"
             value={quantity}
